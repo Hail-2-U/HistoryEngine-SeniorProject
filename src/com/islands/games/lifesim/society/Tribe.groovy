@@ -14,7 +14,9 @@ import com.islands.games.lifesim.metaphysics.MagicHandicap
 import com.islands.games.lifesim.metaphysics.MortalityHandicap
 import com.islands.games.lifesim.metaphysics.Tech
 import com.islands.games.lifesim.metaphysics.TechHandicap
+import com.islands.games.lifesim.world.*
 import groovy.transform.Canonical
+import com.islands.games.lifesim.world.Biome
 
 /**
  * Class representing a group of {@link Person}s that are socially linked.
@@ -37,7 +39,7 @@ class Tribe implements Serializable {
     // By percent -- so 30 = 30%.
     int birthRate = 3
     float tribeMortality = 0.015
-
+    Biome biome
 
     /**
      * Create a new Tribe.

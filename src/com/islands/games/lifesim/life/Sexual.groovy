@@ -4,6 +4,7 @@ import com.islands.games.lifesim.Random
 
 /**
  * Trait an {@link Organism} subclass can implement, indicating it reproduces sexually via standard M/F biology.
+ * Birds and Bees
  */
 trait Sexual implements Serializable {
     // Sex of the Organism.

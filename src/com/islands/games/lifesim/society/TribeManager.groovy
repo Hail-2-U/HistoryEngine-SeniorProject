@@ -7,6 +7,7 @@ import com.islands.games.lifesim.Time
 import com.islands.games.lifesim.life.Person
 import com.islands.games.lifesim.life.Sexual
 import com.islands.games.lifesim.Random
+import com.islands.games.lifesim.Location
 
 class TribeManager implements Printable {
 

@@ -4,6 +4,8 @@ import com.islands.games.lifesim.Time.Age
 import com.islands.games.lifesim.exceptions.UserQuittingException
 import com.islands.games.lifesim.life.Person
 import com.islands.games.lifesim.society.TribeManager
+import com.islands.games.lifesim.world.Biome
+import com.islands.games.lifesim.world.BiomeManager
 
 /**
  * General class for starting and manipulating the Simulation.
@@ -13,6 +15,7 @@ class Simulation implements Printable {
     static boolean USE_GUI = true
 
     static GUIManager gMan
+    static BiomeManager bMan
 
 
     // Number of years in a human generation.
@@ -150,7 +153,8 @@ class Simulation implements Printable {
      */
     static void make(ArrayList<String> words) {
         def makeOptions = [
-                "tribe"
+                "tribe",
+                "biome"
                 ]
 
         DBG "entering make"
@@ -164,6 +168,11 @@ class Simulation implements Printable {
                 else
                     makeTribe([],USE_GUI)
                 break
+            case "biome":
+                if(words.size() > 1){
+                    makeBiome(words[1..-1],USE_GUI)
+                }
+
             case null:
                 println "The `$command` command must be used with a subcommand. Possible options are: $makeOptions"
                 break
@@ -242,21 +251,36 @@ class Simulation implements Printable {
                 locationInput = getInput()
                 X = locationInput[0] as double
                 Y = locationInput[1] as double
-                def tribe = TribeManager.isTooClose(new Location(X,Y))
+                def tribe = TribeManager.isTooClose(new Location(X, Y))
                 errorCatch = tribe
-                if(tribe) {
+                if (tribe) {
                     println "The coordinates you specified are too close to at least one other tribe."
                     println "Specifically, tribe `$tribe.name` with coordinates $tribe.location." +
                             " Please try again."
                     // TODO: Tell them what the existing ones are so they stand a chance
                 }
-            } catch(ignored) {
+
+            } catch (ignored) {
                 println "Unable to parse your input as two numbers. Please enter two numbers only (decimals allowed)."
             }
         }
         println "Location set to ($X,$Y). Creating tribe with given details..."
         TribeManager.addTribe(nameInput,countInput,X,Y)
+        Println "Assign a biome out of the following options: ${bMan.BIOMES}"//TODO: add options
+        String type = getInput()
+        if(type in bMan.BIOMES){
+            new Biome()
+        }
+        else{
+            throw new Exception()
+
+
+        }
         println "Tribe created."
+    }
+
+    static void makeBiome(){
+        //TODO: finish
     }
 
     static void getTribes(List<String> details) {

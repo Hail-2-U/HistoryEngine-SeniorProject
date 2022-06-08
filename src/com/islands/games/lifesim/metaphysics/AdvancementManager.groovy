@@ -1,6 +1,6 @@
 package com.islands.games.lifesim.metaphysics
 
-import com.islands.games.lifesim.threats.Threat
+import com.islands.games.lifesim.world.Threat
 
 /**
  * Management class for various advancements a Tribe can make.

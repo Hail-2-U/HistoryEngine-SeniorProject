@@ -1,4 +1,4 @@
-package com.islands.games.lifesim.threats
+package com.islands.games.lifesim.world
 
 /**
  * Management class for {link Threat} objects.

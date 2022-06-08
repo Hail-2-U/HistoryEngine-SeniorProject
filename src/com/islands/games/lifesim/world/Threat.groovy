@@ -1,7 +1,8 @@
-package com.islands.games.lifesim.threats
+package com.islands.games.lifesim.world
 
 import com.islands.games.lifesim.Location
 import com.islands.games.lifesim.metaphysics.AdvancementManager
+
 
 /**
  * Class for threats a Tribe may face in the simulation.
