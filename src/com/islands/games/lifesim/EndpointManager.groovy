@@ -2,7 +2,7 @@ package com.islands.games.lifesim
 
 import com.islands.games.lifesim.society.Tribe
 import com.islands.games.lifesim.society.TribeManager
-import com.islands.games.lifesim.threats.ThreatManager
+import com.islands.games.lifesim.world.ThreatManager
 
 /**
  * Management class for REST endpoints and the method calls they will make.
