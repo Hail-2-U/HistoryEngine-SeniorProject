@@ -6,6 +6,7 @@ import com.islands.games.lifesim.life.Person
 import com.islands.games.lifesim.society.TribeManager
 import com.islands.games.lifesim.world.Biome
 import com.islands.games.lifesim.world.BiomeManager
+import com.islands.games.lifesim.world.WorldManager
 
 /**
  * General class for starting and manipulating the Simulation.
@@ -16,6 +17,7 @@ class Simulation implements Printable {
 
     static GUIManager gMan
     static BiomeManager bMan
+    static WorldManager wMan
 
 
     // Number of years in a human generation.
@@ -251,7 +253,7 @@ class Simulation implements Printable {
                 locationInput = getInput()
                 X = locationInput[0] as double
                 Y = locationInput[1] as double
-                def tribe = TribeManager.isTooClose(new Location(X, Y))
+                boolean tribe = TribeManager.isTooClose(new Location(X, Y))
                 errorCatch = tribe
                 if (tribe) {
                     println "The coordinates you specified are too close to at least one other tribe."
@@ -266,14 +268,21 @@ class Simulation implements Printable {
         }
         println "Location set to ($X,$Y). Creating tribe with given details..."
         TribeManager.addTribe(nameInput,countInput,X,Y)
-        Println "Assign a biome out of the following options: ${bMan.BIOMES}"//TODO: add options
+        println "Assign a biome out of the following options: ${bMan.BIOMES}"//TODO: add options
         String type = getInput()
-        if(type in bMan.BIOMES){
-            new Biome()
-        }
-        else{
-            throw new Exception()
+        errorCatch = true;
 
+        //TODO: replace bMan.BIOMES with reference to valid biomes in conf
+
+        while(errorCatch){
+            if(type in bMan.BIOMES) {
+                errorCatch = false
+                new Biome(type, X, Y)
+                println "Biome of type $type created for new tribe"
+            }
+            else{
+                println "The biome type $type is invalid. Available options are ${bMan.BIOMES}"
+            }
 
         }
         println "Tribe created."

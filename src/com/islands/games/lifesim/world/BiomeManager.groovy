@@ -3,6 +3,7 @@ package com.islands.games.lifesim.world
 import com.islands.games.lifesim.Printable
 import com.islands.games.lifesim.life.Person
 import com.islands.games.lifesim.society.Tribe
+import com.islands.games.lifesim.Random
 
 class BiomeManager implements Printable{
 
@@ -11,9 +12,12 @@ class BiomeManager implements Printable{
     static ArrayList<Threat> THREATS = new ArrayList<>()
     static ArrayList<Resource> RESOURCES = new ArrayList<>()
 
-    static Biome addBiome(String name,double x,double y) {
 
-        Biome B = new Biome(name,x,y)
+    static Biome addBiome(String type,double x,double y) {
+        ArrayList<Threat> newThreats = new ArrayList<>()
+
+        Random.nextInt()
+        Biome B = new Biome(type,x,y)
         BIOMES << B
 
         return B
